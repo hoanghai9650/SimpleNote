@@ -1,6 +1,6 @@
-# Use Xcode 15
+Use Xcode 15
 
-# For IOS
+ For IOS
 
 yarn
 cd ios && pod install

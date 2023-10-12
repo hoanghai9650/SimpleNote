@@ -1,4 +1,4 @@
 export const ROUTES = {
-  HOME: 'HOME',
-  ADD_OR_EDIT_NOTE: 'ADD_OR_EDIT_NOTE',
+  HOME: 'Home',
+  ADD_OR_EDIT_NOTE: 'AddOrEditNote',
 };

@@ -1,15 +1,13 @@
-import {
-  StackActions,
-  CommonActions,
-  createNavigationContainerRef,
-} from '@react-navigation/native';
+import {createNavigationContainerRef} from '@react-navigation/native';
+import {AppStackParamList} from './AppNavigator';
 
-export const navigationRef = createNavigationContainerRef();
+export const navigationRef = createNavigationContainerRef<AppStackParamList>();
 
 export const NavigationService = {
   goBack: () => navigationRef.current?.goBack(),
+
   route: navigationRef.current?.getCurrentRoute(),
 
-  navigate: (route: any, params?: any) =>
-    navigationRef.current?.navigate(route, params),
+  navigate: (route: string, params?: object | undefined) =>
+    navigationRef.current?.navigate(route as never, params as never),
 };

@@ -5,20 +5,25 @@ import {ROUTES} from './Routes';
 import * as Screens from '../screen';
 import {navigationRef} from './NavigationService';
 
-const Stack = createStackNavigator();
+export type AppStackParamList = {
+  Home: undefined;
+  AddOrEditNote: undefined;
+};
+
+const Stack = createStackNavigator<AppStackParamList>();
 
 export const AppNavigator = () => {
   return (
     <NavigationContainer ref={navigationRef}>
       <Stack.Navigator
-        initialRouteName={ROUTES.HOME}
+        initialRouteName={'Home'}
         screenOptions={{
           headerShown: false,
           //   animation: 'slide_from_right',
         }}>
-        <Stack.Screen name={ROUTES.HOME} component={Screens.Home} />
+        <Stack.Screen name={'Home'} component={Screens.Home} />
         <Stack.Screen
-          name={ROUTES.ADD_OR_EDIT_NOTE}
+          name={'AddOrEditNote'}
           component={Screens.AddOrEditNote}
         />
       </Stack.Navigator>

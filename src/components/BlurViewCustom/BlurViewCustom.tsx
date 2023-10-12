@@ -1,5 +1,5 @@
 import {Alert, StyleSheet, TextInput, View} from 'react-native';
-import React from 'react';
+import React, {useState} from 'react';
 import {BlurView} from '@react-native-community/blur';
 import {useDispatch, useSelector} from 'react-redux';
 import {updateLogin} from '../../store/app';
@@ -8,18 +8,21 @@ import {RootState} from '../../store/store';
 export const BlurViewCustom = () => {
   const dispatch = useDispatch();
   const isBiometric = useSelector((state: RootState) => state.app.isBiometric);
+  const [value, setValue] = useState('');
   return (
     <View style={styles.container}>
       {!isBiometric ? (
         <View style={styles.inputContainer}>
           <TextInput
-            // style={{backgroundColor: 'red'}}
+            testID="PasswordTest"
+            value={value}
             textAlign={'center'}
-            onChangeText={value => {
-              if (value.length !== 4) {
+            onChangeText={val => {
+              setValue(val);
+              if (val.length !== 4) {
                 return;
               }
-              if (value !== '1234') {
+              if (val !== '1234') {
                 Alert.alert('Wrong Password', 'Please try again.');
                 return;
               }
